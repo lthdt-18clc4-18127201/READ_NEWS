@@ -150,4 +150,16 @@ router.post('/addnews', async (req, res) => { // tạo tk// t nho co cai lenh po
     //return res.redirect("/login") // còn gì nữa ko cu // di chet di :VV làm cáhc nào để lấy bụi ra khỏi khe điện thoại đây >
     //con alcohol bụi ở khe mà :) đổ cồn vào ăn lol à khe naokhe màn hình :( nó đóng ở trỏng khe loa ha) refactor code đi dm nhìn nhơ cái ổ gà v/ok nice
 })
+
+router.get('/news', async (req, res) => {
+    console.log(req.query.name);
+    res.render('news');
+});
+
+router.post('/news', async (req, res) => {
+    console.log(req.body);
+    res.send('news');
+});
+
+
 module.exports = router//alo alo moi di wc ve

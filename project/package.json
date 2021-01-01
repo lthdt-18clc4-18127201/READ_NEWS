@@ -18,7 +18,8 @@
   "version": "1.0.0",
   "main": "function.js",
   "scripts": {
-    "test": "nodemon src/index.js"
+    "start": "nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
