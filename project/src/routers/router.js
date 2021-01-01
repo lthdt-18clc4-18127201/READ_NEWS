@@ -112,7 +112,7 @@ router.post('/profile/edit', async (req, res) => {
         user.email = req.body.email,
         user.password = req.body.password//t meo nghi toi cach edit nay lun
     await user.save()
-    return res.redirect("/profile?id=" + id)
+    return res.redirect("/")
 })
 
 router.get('/manage', async(req, res) => {

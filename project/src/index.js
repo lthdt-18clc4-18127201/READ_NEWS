@@ -45,9 +45,9 @@ hbs.registerPartials(partialAsset)
 // ?cc gì đó = req.query.cc gì đó ok
 const ROUTER = require("./routers/router")
 passport.use(new localStrategy( // m ko cho nó ô username passowrd à ?/co ma ? dau /ham local tu get string minh nhap o login 
-  async (username, password, done) => {
+  async (email, password, done) => {
     try{
-      const user = await method.searcAccount(username, password) //
+      const user = await method.searcAccount(email, password) //
       console.log(user)
       if(!user){
           return done(null,false,{message:'Wrong username or password'})// ko co tac dung dau
@@ -73,7 +73,7 @@ app.use(ROUTER) //chac ok r do ok bo may di chơi ghệ DF9ức ANh
 
 
 app.listen(port, () => {
-  console.log("System on port " + port)
+  console.log(`System on port: ${port}`)
 });
 // app.get('/profile/edit', async (req, res) => {
 //   const id = req.query.id
