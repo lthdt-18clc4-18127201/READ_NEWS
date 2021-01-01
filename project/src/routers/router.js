@@ -162,4 +162,4 @@ router.post('/news', async (req, res) => {
 });
 
 
-module.exports = router//alo alo moi di wc ve
+module.exports = router;

@@ -13,4 +13,3 @@
 	  });
 	});
      }); 
-     // cái này mục đích làm gì ?// load json len html để t coi
