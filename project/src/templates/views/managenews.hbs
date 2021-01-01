@@ -1,0 +1,76 @@
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>PROFILE</title>
+</head>
+
+<body>
+    {{>header}}
+
+    <div id="top">
+        <a href="http://google.com">
+        <img src="img/profile.png" alt="news">
+        </a>
+        {{#if logged}}
+        <p id="login">{{user.name}}</p>
+        <a href="/logout" id="login">logout</a>
+         {{else}}
+        <a href="/login" id="login">login</a>
+        <a href="/reg" id="login">register</a>
+    </div>
+        {{/if}}
+        <div id="menu">
+            <ul>
+                <li><a href="/">Trang chủ</a></li>
+                <li><a href="/about">tab 1</a></li>
+                <li><a href="/profile">tab 2</a></li>
+                <li><a href="#">tab 3</a></li>
+                <li><a href="#">tab 4</a></li>
+            </ul>
+        </div>
+        <br>
+     <form action="/findnews" method="post"></form>    
+        <input type="text" name="search-id" id="text-input">
+        <input type="submit" value="find">
+    </form>
+    <br>
+    <br>
+    <br>
+    <form action="/editnews" method="post">
+        <input type="text" name="title" placeholder="title" value="{{news.title}}" required>
+        <br>
+        <input type="text" name="img" placeholder="img-url" value="{{news.img}}" required>
+        <br>
+        <input type="text" name="genre" placeholder="genre" value="{{news.genre}}" required>
+        <br>
+        <input type="text" name="description" placeholder="description" value="{{news.description}}" required>
+        <br>
+        <input type="text" name="content" placeholder="content" value="{{news.content}}" required>
+        <br>
+        <input type="text" name="author" placeholder="pass" value="{{news.author}}" required>
+        <br>
+        <input type="submit" value="SAVE">
+    </form>
+
+    <br>
+    <br>
+    <form action="/addnews" method="post">
+        <input type="text" name="title" placeholder="title" required>
+        <br>
+        <input type="text" name="img" placeholder="img-url" required>
+        <br>
+        <input type="text" name="genre" placeholder="genre" required>
+        <br>
+        <input type="text" name="description" placeholder="description" required>
+        <br>
+        <input type="text" name="content" placeholder="content" required>
+        <br>
+        <input type="text" name="author" placeholder="pass" required>
+        <br>
+        <input type="submit" value="Add">
+    </form>
+
+</body>
+
+</html>

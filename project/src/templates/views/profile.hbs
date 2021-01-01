@@ -1,0 +1,73 @@
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>PROFILE</title>
+</head>
+
+<body>
+    {{>header}}
+
+    <div id="top">
+        <a href="http://google.com">
+        <img src="img/profile.png" alt="news">
+        </a>
+        {{#if logged}}
+        <p id="login">{{user.name}}</p>
+        <a href="/logout" id="login">logout</a>
+         {{else}}
+        <a href="/login" id="login">login</a>
+        <a href="/reg" id="login">register</a>
+    </div>
+        {{/if}}
+        <div id="menu">
+            <ul>
+                <li><a href="/">Trang chủ</a></li>
+                <li><a href="/about">tab 1</a></li>
+                <li><a href="/profile">tab 2</a></li>
+                <li><a href="#">tab 3</a></li>
+                <li><a href="#">tab 4</a></li>
+            </ul>
+        </div>
+        <br>
+        {{#if logged}}
+        {{!-- <p>{{user.name}}</p>
+        <a href="/logout" id="login">logout</a> --}}
+        <form action="/profile/edit" method="post">
+            <input type="text" name="name" placeholder="username" value="{{user.name}}" required>
+            <br>
+            <input type="text" name="email" placeholder="mail" value={{user.email}} required>
+            <br>
+            <input type="text" name="password" placeholder="pass" value={{user.password}} required>
+            <br>
+            <input type="submit" value="SAVE">
+        </form>
+        {{else}}
+        {{!-- <a href="/login" id="login">login</a>
+        <a href="/reg" id="login">register</a> --}}
+        <form action="/register" method="post">
+            <input type="text" name="name" placeholder="username" required>
+            <br>
+            <input type="text" name="email" placeholder="mail" required>
+            <br>
+            <input type="text" name="password" placeholder="pass" required>
+            <br>
+            <input type="submit" value="Register">
+        </form>
+        {{/if}}
+    </div>
+    <div id="Login">
+
+        {{!-- {{#each list}}
+        <li>
+            <a href="/profile?id={{this.id}}">
+                <h2>{{this.name}}</h2>
+            </a>
+            <p>{{this.email}}</p>
+        </li>
+        {{/each}} --}}
+    </div>
+
+</body>
+
+</html>

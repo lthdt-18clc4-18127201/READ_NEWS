@@ -1,0 +1,39 @@
+<html>
+
+<body>
+    {{>header}}
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <div id="top">
+        <a href="http://google.com">
+            <img src="img/News.png" alt="news">
+        </a>
+    </div>
+    <div id="menu">
+        <ul>
+            <li><a href="/">Trang chủ</a></li>
+            <li><a href="/about">tab 1</a></li>
+            <li><a href="#">tab 2</a></li>
+            <li><a href="#">tab 3</a></li>
+            <li><a href="#">tab 4</a></li>
+        </ul>
+    </div>
+
+    <div id="Login">
+        <form action="/login" method="post">
+            <input type="text" name="username" placeholder="username">
+            <br>
+            <input type="password" name="password" placeholder="password">
+            <br>
+            <input type="submit" name="" value="Login">
+            {{#if messages.error}}
+            <div>
+                <p style="color: red;">{{messages.error}}</p>
+            </div>
+            {{/if}}
+        </form>
+    </div>
+    {{>footer}}
+</body>
+
+</html>

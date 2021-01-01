@@ -1,0 +1,63 @@
+<html>
+
+
+<body>
+    {{>header1}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+     <div id="top">
+        <a href="http://google.com">
+        <img src="img/News.png" alt="news">
+        </a>
+    </div>
+    <div id="menu">
+        <ul>
+            <li><a href="/">Trang chủ</a></li>
+            <li><a href="/about">tab 1</a></li>
+            <li><a href="#">tab 2</a></li>
+            <li><a href="#">tab 3</a></li>
+            <li><a href="#">tab 4</a></li>
+            <li><a href="#">đăng ký</a></li>
+            <li><a href="#">đăng nhập</a></li>
+            <form action="" >
+                <input type="text" name="txtUser" id="text-input">
+            </form>
+        </ul>
+    </div>
+    
+    <div id="main">
+        <div id="left">
+             <ul>
+                <li>
+                   
+                   {{#if checkExist}}
+                        <h3>{{post.title}}</h3>
+                     <img src="img/gay.jpg" alt="" id="read_img">
+                     <p>{{post.content}}</p>
+                     
+                     {{else}}
+                        <p> bài khong ton tai</p>
+                     {{/if}}
+                </li>
+            </ul>
+        </div>
+        <div id="right">
+            <div class="menu_right">
+                <h3>Thể loại</h3>
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+            rigth</div>
+    </div>
+    
+    
+    
+    <div id="footer">foot</div>
+    
+</body>
+
+</html>

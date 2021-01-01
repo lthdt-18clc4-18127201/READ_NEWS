@@ -1,0 +1,78 @@
+<html>
+
+<body>
+    {{>header}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+     <div id="top">
+        <a href="http://google.com">
+        <img src="img/News.png" alt="news">
+        </a>
+        {{#if check1}}
+                <a href="/profile?id={{user._id}}" id="login">{{user.name}}</a>
+                <a href="/logout" id="login">logout</a>
+            {{else}}
+                <a href="/login" id="login">login</a>
+                <a href="/profile" id="login">register</a>
+            {{/if}}
+        
+        
+    </div>
+    <div id="menu">
+        <ul>
+            <li><a href="/">Trang chủ</a></li>
+            <li><a href="/about">tab 1</a></li>
+            <li><a href="/profile">tab 2</a></li>
+            <li><a href="#">tab 3</a></li>
+            <li><a href="#">tab 4</a></li>
+        </ul>
+    </div>
+  
+    <div id="main">
+        <div id="left">
+            {{!-- {{#if checkExist}}
+                 <li>
+              <img src={{post.img}}>
+              <h2>{{post.title}}</h2>     
+              {{post.info}}
+                </li>
+            {{else}}
+                <p> bài đéo ton tai</p>
+            {{/if}} --}}
+             <ul>
+            {{!-- <li>
+                    <img src="img/gay.jpg" alt="">
+                    <h2>{{data}}</h2>
+
+                </li> --}}
+    
+            {{#each data}}
+            <li>
+            <a href="/read?id={{this._id}}">
+              <img src="img/gay.jpg">
+              <h2>{{this.title}}</h2>   
+              </a>  
+              <p>{{this.description}}</p>
+              </li>
+            {{/each}}
+            </ul>
+        </div>
+        <div id="right">
+            <div class="menu_right">
+                <h3>Thể loại</h3>
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+            rigth</div>
+    </div>
+    
+    
+      
+    
+</body>
+{{>footer}}
+</html>

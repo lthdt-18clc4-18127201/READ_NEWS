@@ -1,0 +1,38 @@
+<html>
+
+<body>
+    {{>header}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+     <div id="top">
+        <a href="http://google.com">
+        <img src="img/profile.png" alt="news">
+        </a>
+        {{#if check1}}
+                <a href="#" id="login">{{accountid}}</a>
+                <a href="/logout" id="login">logout</a>
+            {{else}}
+                <a href="/login" id="login">login</a>
+                <a href="/reg" id="login">register</a>
+            {{/if}}
+    </div>
+     <div id="Login">
+        <form action="/profile/edit" method="post">
+        <input type="text" name="name" placeholder="username">
+        <br>
+        <input type="text" name="email" placeholder="password">
+        <br>
+        <input type="text" name="password" placeholder="name">
+        <br>
+        <input type="submit" name="" value="Login">
+    </form>
+         {{#each list}}
+            <li>
+            <a href="/profile/edit?id={{this.id}}">
+              <h2>{{this.name}}</h2>   
+              </a>  
+              <p>{{this.email}}</p>
+              </li>
+        {{/each}}
+    </div>
+</body>
+</html>
