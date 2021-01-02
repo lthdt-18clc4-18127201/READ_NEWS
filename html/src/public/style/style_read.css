@@ -1,0 +1,121 @@
+body{
+    font-family: Tahoma;
+    font-size: 13px;
+    width: 1000px;
+    margin: 0px auto;
+
+}
+#top{
+    background-color: white;
+    height: auto;
+    width: 1000px;
+}
+#menu{
+    background-color: black;
+    height: 40px;
+
+}
+#menu #text-input{
+float: right;
+width: 300px;
+height: 40px;
+box-sizing: border-box
+
+}
+#main{
+    margin-top: 10px;
+}
+#main #left{
+
+    width: 700px;
+    background-color: white;
+    float: left;
+    min-height: 400px;
+}
+#main #left ul{
+    margin: 0px;
+    padding: 0px;
+
+}
+#main #left ul li{
+    list-style: none;
+    clear: left;
+    border-bottom: 2px solid black;
+    float: left;
+    margin-bottom: 20px;
+    margin-top: 15px;
+    
+}
+#main #left ul li img{
+    float: center;
+    margin-right: 10px;
+    width: 300px;
+    height: 300px;
+    margin-bottom: 20px;
+    
+    
+}
+#main #left ul li h2{
+    font-size: 14px;
+    margin-top: 0px;
+    
+    
+    
+}
+#main #left ul li h3{
+    font-size: 20px;
+    margin-top: 0px;
+    text-align: center;
+
+    
+    
+}
+#main #left ul li p{
+    font-size: 18px;
+    margin-top: -10px;
+    text-align: left;
+    text-indent: 15px;
+    
+}
+#main #right{
+    width: 300px;
+    background-color: black;
+    float: left;
+    min-height: 400px;
+}
+#main #right .menu_right ul{
+    margin: 0px;
+    padding: 0px;
+}
+#main #right .menu_right ul li{
+    list-style: none;
+} 
+#footer{
+    background-color: slateblue;
+    width: 1000px;
+    text-align: center;
+    height: 60px;
+    clear: left;
+}
+#menu ul{
+    margin:  0px;
+    padding: 0px;
+
+}
+#menu ul li{
+    list-style: none;
+    float: left;
+
+
+}
+#menu ul li a{
+   text-decoration: none;
+   display: block;
+   height: 40px;
+   line-height: 40px;
+   color: white;
+    padding: 0px 26px 0px 26px;
+    border-right: 1px solid white;
+    
+
+}
