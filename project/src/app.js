@@ -91,13 +91,20 @@ app.listen(port, () => {
 //        password: req.body.password}
 //  )
 //    })
+var MongoClient = require("mongodb").MongoClient;
+var ObjectID = require("mongodb").ObjectID;
+MongoClient.connect("mongodb://localhost:27017", {useNewUrlParser: true}, function(error, client){
+  var blog = client.db("blog")
+  console.log("DB connected")
 
-app.post("/do-comment", function(req, res){
-   blog.collection("read").update({ "_id": ObjectID(req.body.post_id)}, {
-     $push: {
-       "comments" : {username: req.body.username, comment: req.body.comment}
-     }
-   }, function(error, post){
-        res.send("comment successfull")
-   })
+  app.post('/do-comment', function(req, res){
+    blog.collection("read").update({ "_id": ObjectID(req.body.post_id)}, {
+      $push: {
+        "comments" : {username: req.body.username, comment: req.body.comment}
+      }
+    }, function(error, post){
+         res.send("comment successfull")
+  })
+})
+
 });

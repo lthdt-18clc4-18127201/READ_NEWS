@@ -57,7 +57,7 @@
     <div class = "card mb-4">
         <h5 class = "card-header">Leave a comment:</h5>
         <div class = "card-body">
-            <form method = "POST" onsubmit="return doComment(this)">
+            <form action ="/do-comment"  method = "POST" onsubmit="return doComment(this)">
                 <input type="hidden" name="post_id" value="<%= post._id%>"/>
                 <div class = "form-group">
                     <input class="form-control" name="username"/>
