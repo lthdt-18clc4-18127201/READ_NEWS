@@ -46,18 +46,18 @@ hbs.registerPartials(partialAsset)
 const ROUTER = require("./routers/router")
 passport.use(new localStrategy( // m ko cho nó ô username passowrd à ?/co ma ? dau /ham local tu get string minh nhap o login 
   async (username, password, done) => {
-    try{
+    try {
       const user = await method.searcAccount(username, password) //
       console.log(user)
-      if(!user){
-          return done(null,false,{message:'Wrong username or password'})// ko co tac dung dau
+      if (!user) {
+        return done(null, false, { message: 'Wrong username or password' })// ko co tac dung dau
       }
-      else{
-          return done(null,user)//a a qua dey ne// hack nao vl :v
+      else {
+        return done(null, user)//a a qua dey ne// hack nao vl :v
       }
-  }catch(e){
-      return done(null,e)
-  }
+    } catch (e) {
+      return done(null, e)
+    }
 
   }
 ))
@@ -93,16 +93,18 @@ app.listen(port, () => {
 //        password: req.body.password}
 //  )
 //    })
+//var ObjectID = require("mongoose").ObjectID;
+var MongoClient = require("mongodb").MongoClient;
 var ObjectID = require("mongodb").ObjectID;
-
+MongoClient.connect("mongodb://localhost:27017", {useNewUrlParser: true}, function(error, client){
 var blog = client.db("blog")
 
-app.post('/do-comment', function(req, res){
-  blog.collection("read").update({ "_id": ObjectID(req.body.post_id)}, {
+app.post('/do-comment', function (req, res) {
+  blog.collection("read").update({ "_id": ObjectID(req.body.post_id) }, {
     $push: {
-      "comments" : {username: req.body.username, comment: req.body.comment}
+      "comments": { username: req.body.username, comment: req.body.comment }
     }
-  }, function(error, post){
-      res.send("comment successfull")
+  }, function (error, post) {
+    res.send("comment successfull")
   })
-});
+})})
