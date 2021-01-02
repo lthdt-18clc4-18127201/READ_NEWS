@@ -2,11 +2,7 @@
 
 
 <body>
-    
     {{>header1}}
-
-    <div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v9.0" nonce="ihJyXAKL"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
      <div id="top">
         <a href="http://google.com">
@@ -42,7 +38,6 @@
                      {{else}}
                         <p> bài khong ton tai</p>
                      {{/if}}
-                     <div class="fb-comments" data-href="https://www.facebook.com/nguyenhoanganhtu7377/posts/2606438949578531" data-width="" data-numposts="5"></div>
                 </li>
             </ul>
         </div>
@@ -59,8 +54,55 @@
             </div>
             rigth</div>
     </div>
- 
-
+    
+    
+        <!--Comment form-->
+        <div class = "card mb-4">
+            <h5 class = "card-header">Leave a comment:</h5>
+            <div class = "card-body">
+                <form action ="/do-comment"  method = "POST" onsubmit="return doComment(this)">
+                    <input type="hidden" name="post_id" value="<%= post._id%>"/>
+                    <div class = "form-group">
+                        <input class="form-control" name="username"/>
+                    </div>
+                    <div class = "form-group">
+                        <textarea class="form-control" name="comment" rows = "3"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Post</button>
+                </form>
+            </div>
+        </div>
+        <script>
+            function doComment(form){
+                $.ajax({
+                    url: "/do-comment",
+                    method: "POST",
+                    data: {username: form.username.value, comment: form.comment.value, post_id = form.post_id.value}
+                    success: function(response){
+                        alert(response)
+                    }
+                })
+                return false
+            }
+        </script>
+        <!--Single comment -->
+        <div>
+            <form post.comments = post.comments.reverse(); >
+            <form post.comments.forEach(function (comments)) >
+                <div class = "media mb-4">
+                    <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt ="">
+                    <div class = "media-body">
+                        <h5 class = "mt-0">
+                            <form comments.username >
+                        </h5>
+                        <canvas comments.comments>
+                    </div>
+                </div>
+        </div>
+    
+    
+    <div id="footer">foot</div>
+    
 </body>
 
 </html>

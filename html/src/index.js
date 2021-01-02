@@ -93,3 +93,16 @@ app.listen(port, () => {
 //        password: req.body.password}
 //  )
 //    })
+var ObjectID = require("mongodb").ObjectID;
+
+var blog = client.db("blog")
+
+app.post('/do-comment', function(req, res){
+  blog.collection("read").update({ "_id": ObjectID(req.body.post_id)}, {
+    $push: {
+      "comments" : {username: req.body.username, comment: req.body.comment}
+    }
+  }, function(error, post){
+      res.send("comment successfull")
+  })
+});
