@@ -151,9 +151,11 @@ router.post('/addnews', async (req, res) => { // tạo tk// t nho co cai lenh po
     //con alcohol bụi ở khe mà :) đổ cồn vào ăn lol à khe naokhe màn hình :( nó đóng ở trỏng khe loa ha) refactor code đi dm nhìn nhơ cái ổ gà v/ok nice
 })
 
-router.get('/news', async (req, res) => {
-    console.log(req.query.name);
-    res.render('news');
+router.get('/news', async (req, res, next) => {
+    await Post.find({})
+        .then(news => res.render('news', { news }))
+        .catch(next);
+    
 });
 
 router.post('/news', async (req, res) => {

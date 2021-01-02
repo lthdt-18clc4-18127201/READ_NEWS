@@ -1,7 +1,7 @@
 const http = require('http');
 const path = require('path');
 const fs = require('fs');
-const bodyParser = require('body-parser');
+//const bodyParser = require('body-parser');
 const passport = require('passport');
 const session = require('express-session');
 var mongoose = require('mongoose');
@@ -38,6 +38,9 @@ app.set("views", publicAsset)
 hbs.registerPartials(partialAsset)
 
 const ROUTER = require('./routers/router')
+const db = require('./mongoose/connect');
+db.connect();
+
 passport.use(new localStrategy( // m ko cho nó ô username passowrd à ?/co ma ? dau /ham local tu get string minh nhap o login 
   async (email, password, done) => {
     try{
