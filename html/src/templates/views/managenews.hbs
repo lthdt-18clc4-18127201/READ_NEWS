@@ -29,14 +29,12 @@
                 <li><a href="#">tab 4</a></li>
             </ul>
         </div>
-        <br>
-     <form action="/findnews" method="post"></form>    
-        <input type="text" name="search-id" id="text-input">
-        <input type="submit" value="find">
-    </form>
+  
     <br>
     <br>
     <br>
+    {{#if isedit}}
+    <h1>Edit news</h1>
     <form action="/editnews" method="post">
         <input type="text" name="title" placeholder="title" value="{{news.title}}" required>
         <br>
@@ -48,13 +46,14 @@
         <br>
         <input type="text" name="content" placeholder="content" value="{{news.content}}" required>
         <br>
-        <input type="text" name="author" placeholder="pass" value="{{news.author}}" required>
+        <input type="text" name="author" placeholder="author" value="{{news.author}}" required>
         <br>
         <input type="submit" value="SAVE">
     </form>
-
+   {{else}}
     <br>
     <br>
+    <h1>Add news</h1>
     <form action="/addnews" method="post">
         <input type="text" name="title" placeholder="title" required>
         <br>
@@ -66,11 +65,11 @@
         <br>
         <input type="text" name="content" placeholder="content" required>
         <br>
-        <input type="text" name="author" placeholder="pass" required>
+        <input type="text" name="author" placeholder="author" required>
         <br>
         <input type="submit" value="Add">
     </form>
-
+{{/if}}
 </body>
 
 </html>

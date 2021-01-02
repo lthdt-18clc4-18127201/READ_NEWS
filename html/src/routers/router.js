@@ -51,7 +51,7 @@ router.get('/', async(req, res) => {
             data
         })
     }
-
+post=await Post.find()
 })
 router.get('/logout', (req, res) => {
     req.logOut()
@@ -130,6 +130,11 @@ router.get('/manage', async(req, res) => {
     if (req.isAuthenticated()) {
         
         const postid = req.query.id
+        if(postid==undefined){
+        isedit=false
+        }else{
+        isedit=true
+        }
         const id = req.user._id
         const user = await Users.findById(id)
         const news = await Post.findById(postid)
@@ -138,7 +143,8 @@ router.get('/manage', async(req, res) => {
         res.render("managenews", {
             user: user,
             logged: true,
-            news
+            news,
+            isedit
         })
     }
     else {
@@ -162,6 +168,7 @@ router.post('/addnews', async (req, res) => { // tạo tk// t nho co cai lenh po
         
     })
     await post.save()
+    return res.redirect("/")
     //return res.redirect("/login") // còn gì nữa ko cu // di chet di :VV làm cáhc nào để lấy bụi ra khỏi khe điện thoại đây >
     //con alcohol bụi ở khe mà :) đổ cồn vào ăn lol à khe naokhe màn hình :( nó đóng ở trỏng khe loa ha) refactor code đi dm nhìn nhơ cái ổ gà v/ok nice
 })

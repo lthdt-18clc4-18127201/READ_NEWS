@@ -31,20 +31,18 @@
         </div>
         <br>
         {{#if logged}}
-        {{!-- <p>{{user.name}}</p>
-        <a href="/logout" id="login">logout</a> --}}
+     
         <form action="/profile/edit" method="post">
             <input type="text" name="name" placeholder="username" value="{{user.name}}" required>
             <br>
-            <input type="text" name="email" placeholder="mail" value={{user.email}} required>
+            <input type="text" name="email" placeholder="mail" value="{{user.email}}" required>
             <br>
-            <input type="text" name="password" placeholder="pass" value={{user.password}} required>
+            <input type="text" name="password" placeholder="pass" value="{{user.password}}" required>
             <br>
             <input type="submit" value="SAVE">
         </form>
         {{else}}
-        {{!-- <a href="/login" id="login">login</a>
-        <a href="/reg" id="login">register</a> --}}
+       
         <form action="/register" method="post">
             <input type="text" name="name" placeholder="username" required>
             <br>
@@ -58,14 +56,6 @@
     </div>
     <div id="Login">
 
-        {{!-- {{#each list}}
-        <li>
-            <a href="/profile?id={{this.id}}">
-                <h2>{{this.name}}</h2>
-            </a>
-            <p>{{this.email}}</p>
-        </li>
-        {{/each}} --}}
     </div>
 
 </body>
