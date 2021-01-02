@@ -55,7 +55,51 @@
             rigth</div>
     </div>
     
-    
+    <div id="comments">
+        <!--Comment form-->
+        <div class = "card mb-4">
+            <h5 class = "card-header">Leave a comment:</h5>
+            <div class = "card-body">
+                <form action ="/do-comment"  method = "POST" onsubmit="return doComment(this)">
+                    <input type="hidden" name="post_id" value="<%= post._id%>"/>
+                    <div class = "form-group">
+                        <input class="form-control" name="username"/>
+                    </div>
+                    <div class = "form-group">
+                        <textarea class="form-control" name="comment" rows = "3"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Post</button>
+                </form>
+            </div>
+        </div>
+        <script>
+            function doComment(form){
+                $.ajax({
+                    url: "/do-comment",
+                    method: "POST",
+                    data: {username: form.username.value, comment: form.comment.value, post_id = form.post_id.value}
+                    success: function(response){
+                        alert(response)
+                    }
+                })
+                return false
+            }
+        </script>
+        <!--Single comment -->
+        <div>
+            <form post.comments = post.comments.reverse(); >
+            <form post.comments.forEach(function (comments)) >
+                <div class = "media mb-4">
+                    <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt ="">
+                    <div class = "media-body">
+                        <h5 class = "mt-0">
+                            <form comments.username >
+                        </h5>
+                        <canvas comments.comments>
+                    </div>
+                </div>
+        </div>
+    </div>
     
     <div id="footer">foot</div>
     
