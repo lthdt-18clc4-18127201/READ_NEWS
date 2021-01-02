@@ -39,6 +39,7 @@ hbs.registerPartials(partialAsset)
 
 const ROUTER = require('./routers/router')
 const db = require('./mongoose/connect');
+const { SSL_OP_TLS_BLOCK_PADDING_BUG } = require('constants');
 db.connect();
 
 passport.use(new localStrategy( // m ko cho nó ô username passowrd à ?/co ma ? dau /ham local tu get string minh nhap o login 
@@ -90,3 +91,13 @@ app.listen(port, () => {
 //        password: req.body.password}
 //  )
 //    })
+
+app.post("/do-comment", function(req, res){
+   blog.collection("read").update({ "_id": ObjectID(req.body.post_id)}, {
+     $push: {
+       "comments" : {username: req.body.username, comment: req.body.comment}
+     }
+   }, function(error, post){
+        res.send("comment successfull")
+   })
+});
