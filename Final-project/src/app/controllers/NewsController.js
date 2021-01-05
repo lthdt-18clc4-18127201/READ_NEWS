@@ -22,11 +22,9 @@ class NewsController {
     };
 
     store(req, res, next) {
-        const formData = req.body;
-        formData.image = req.body.img;
         const new_add = new Post(req.body);
         new_add.save();
-        res.redirect('/news');
+        res.redirect('/user/stored/news');
     };
 
     edit(req, res, next) {
@@ -43,7 +41,19 @@ class NewsController {
     };
 
     delete(req, res, next) {
-        Post.deleteOne({ _id: req.params.id }, req.body)
+        Post.delete({ _id: req.params.id })
+            .then(() => res.redirect('back'))
+            .catch(next);
+    };
+
+    forcedelete(req, res, next) {
+        Post.deleteOne({ _id: req.params.id })
+            .then(() => res.redirect('back'))
+            .catch(next);
+    };
+
+    restore(req, res, next) {
+        Post.restore({ _id: req.params.id })
             .then(() => res.redirect('back'))
             .catch(next);
     };

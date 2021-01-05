@@ -1,6 +1,7 @@
 <div class="mt-4">
     <div>
-        <h3>My news</h3>
+        <h3>Deleted news</h3>
+        <a href="/user/stored/news" class="btn btn-primary my-4">Your news</a>
     </div>
 
     <table class="table mt-4">
@@ -21,15 +22,14 @@
                 <td>{{this.description}}</td>
                 <td>{{this.createdAt}}</td>
                 <td>
-                    <a href="/news/{{this._id}}/edit" class="btn btn-link">Edit</a>
-                    <a href="" class="btn btn-link" data-toggle="modal" data-id="{{this._id}}" data-target="#delete-new-modal">Delete</a>
+                    <a href="" class="btn btn-link btn-restore" data-id="{{this._id}}">Retore</a>
+                    <a href="" class="btn btn-link" data-toggle="modal" data-id="{{this._id}}" data-target="#delete-new-modal">Force Delete</a>
                 </td>
             </tr>
             {{else}}
             <tr>
                 <td colspan="5" class="text-center">
-                    You haven't post any news
-                    <a href="/news/add" class="btn btn-primary my-4">Add a new</a>
+                    Empty...
                 </td>
             </tr>
 
@@ -48,7 +48,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <p>Delete this news?</p>
+                <p>Your new can be restore. Force delete this news?</p>
             </div>
             <div class="modal-footer">
                 <button id="btn-delete-new" type="button" class="btn btn-danger">Delete</button>
@@ -60,11 +60,14 @@
 
 
 <form class="mt-4" name="delete-new-form" method="POST"></form>
+<form class="mt-4" name="restore-new-form" method="POST"></form>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         var newID;
         var deleteForm = document.forms['delete-new-form'];
+        var restoreForm = document.forms['restore-new-form'];
         var btnDeleteNew = document.getElementById('btn-delete-new');
+        var restoreBtn = $('.btn-restore');
          
         $('#delete-new-modal').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
@@ -74,8 +77,14 @@
 
         
         btnDeleteNew.onclick = function() {
-            deleteForm.action = '/news/' + newID + '?_method=DELETE';
+            deleteForm.action = '/news/' + newID + '/force?_method=DELETE';
             deleteForm.submit();
         }
+        restoreBtn.click(function (e) {
+            e.preventDefault();
+            var newID = $(this).data('id');
+            deleteForm.action = '/news/' + newID + '/restore?_method=PATCH';
+            deleteForm.submit();
+        });
     });
 </script>
