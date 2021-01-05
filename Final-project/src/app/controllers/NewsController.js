@@ -31,8 +31,21 @@ class NewsController {
 
     edit(req, res, next) {
         Post.findById(req.params.id)
-            .then(post => res.render('news/edit', { post: mongooseToObject(post) })); 
-        
+            .then(post => res.render('news/edit', { post: mongooseToObject(post) }))
+            .catch(next)
+    };
+
+    // [PUT] /news/:id
+    update(req, res, next) {
+        Post.updateOne({ _id: req.params.id}, req.body)
+            .then(() => res.redirect('/user/stored/news'))
+            .catch(next);
+    };
+
+    delete(req, res, next) {
+        Post.deleteOne({ _id: req.params.id }, req.body)
+            .then(() => res.redirect('back'))
+            .catch(next);
     };
 }
 module.exports = new NewsController;
