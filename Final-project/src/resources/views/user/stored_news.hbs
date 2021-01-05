@@ -1,0 +1,29 @@
+<div class="mt-4">
+    <h3>My news</h3>
+
+    <table class="table mt-4">
+        <thead>
+            <tr>
+                <th scope="col">No.</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Author</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each posts}}
+            <tr>
+                <th scope="row">{{sum @index 1}}</th>
+                <td>{{this.title}}</td>
+                <td>{{this.description}}</td>
+                <td>{{this.author}}</td>
+                <td>
+                    <a href="/news/{{this._id}}/edit" class="btn btn-link">Edit</a>
+                    <a href="" class="btn btn-link">Delete</a>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>

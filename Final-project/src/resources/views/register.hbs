@@ -1,0 +1,21 @@
+<form method="POST" action="/register">
+  <div class="mt-4">
+    <label for="username">Username</label>
+    <input type="text" class="form-control" id="name" name="username" placeholder="Username..."reqiured>
+  </div>
+    <div class="form-group">
+    <label for="Email">Email</label>
+    <input type="email" class="form-control" id="email" name="email" placeholder="Email..."required>
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" id="password" name="password" placeholder="Password..."required>
+  </div>
+  <div class="form-check">
+    <input type="checkbox" class="form-check-input" id="Check">
+    <label class="form-check-label" for="Check">Remember me</label>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<label for="form-suggest">Already have account?</label>
+<a href="/login" class="btn btn-primary my-4">Go to Login</a>
