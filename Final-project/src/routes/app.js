@@ -3,7 +3,7 @@ const siteRouter = require('./site');
 const loginRouter = require('./login');
 const registerRouter = require('./register');
 const changeProfileRouter = require('./changeprofile'); 
-const userRouter = require('./user');
+const userRouter = require('./me');
 
 function route(app) {    
     app.use('/news', newsRouter);
