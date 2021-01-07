@@ -1,7 +1,11 @@
+<h1>Login</h1>
+{{#if messages.error}}
+  <p style="color: red;">{{messages.error}}</p>
+{{/if}}
 <form method="POST" action="/login">
   <div class="mt-4">
-    <label for="username">Username</label>
-    <input type="text" class="form-control" id="name" name="name" placeholder="Username..."reqiured>
+    <label for="email">Email</label>
+    <input type="text" class="form-control" id="email" name="email" placeholder="Email..."reqiured>
   </div>
   <div class="form-group">
     <label for="password">Password</label>
@@ -11,7 +15,7 @@
     <input type="checkbox" class="form-check-input" id="Check">
     <label class="form-check-label" for="Check">Remember me</label>
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary">login</button>
 </form>
 <label for="form-suggest">Haven't an account?</label>
 <a href="/register" class="btn btn-primary my-4">Go to Register</a>

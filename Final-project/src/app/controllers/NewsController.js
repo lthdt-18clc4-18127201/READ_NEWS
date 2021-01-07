@@ -24,7 +24,7 @@ class NewsController {
     store(req, res, next) {
         const new_add = new Post(req.body);
         new_add.save();
-        res.redirect('/user/stored/news');
+        res.redirect('/me/stored/news');
     };
 
     edit(req, res, next) {
@@ -36,7 +36,7 @@ class NewsController {
     // [PUT] /news/:id
     update(req, res, next) {
         Post.updateOne({ _id: req.params.id}, req.body)
-            .then(() => res.redirect('/user/stored/news'))
+            .then(() => res.redirect('/me/stored/news'))
             .catch(next);
     };
 

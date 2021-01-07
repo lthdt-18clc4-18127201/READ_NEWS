@@ -10,6 +10,6 @@ router.delete('/:id', newsController.delete);
 router.delete('/:id/force', newsController.forcedelete);
 router.patch('/:id/restore', newsController.restore);
 router.get('/:slug', newsController.show);
-router.get('/', newsController.news);
+router.get('/', newsController.news); 
 
 module.exports = router;

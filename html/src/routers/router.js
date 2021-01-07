@@ -21,7 +21,7 @@ router.get('/secret', (req, res) => {
  
         res.redirect('/');//neu nhap dung thi ve trang chu
     } else {
-        res.redirect('/login');//neu nhap sai pass thi no route lai ve login
+            res.redirect('/login');//neu nhap sai pass thi no route lai ve login
     }
 })
 router.get('/', async(req, res) => {
