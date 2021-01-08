@@ -1,15 +1,20 @@
 const User = require('../Models/User');
-const { mutipleMongooseToObject } = require('../../util/mongoose');
+const { mongooseToObject } = require('../../util/mongoose');
 const Post = require('../Models/Post');
 const { render } = require('node-sass');
 
 class SiteController {
     home(req, res, next) {
-        User.find({})
-            .then(users => { res.render('homepage', { 
-                users: mutipleMongooseToObject(users) });
-            })
-            .catch(next);
+        var check = false
+        if(req.isAuthenticated()) {
+            check = true
+        } else {
+            check = false
+        }
+        res.render('homepage', {
+            user: req.user,
+            check,
+        });
     }
     about(req, res) {
         res.render('inf')

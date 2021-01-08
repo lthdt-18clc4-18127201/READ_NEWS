@@ -16,7 +16,9 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const User = require('./app/Models/User');
 const { DefaultSerializer } = require('v8');
-const initializePassport = require('./passport-config');
+const initializePassport = require('../src/config/passport/passport');
+const initializeSession = require('../src/config/session/session');
+const cookieParser = require('cookie-parser');
 
 const port = 5000 || process.env.port
 const app = express();
@@ -31,13 +33,15 @@ app.use(flash());
 app.use(session({
   secret: "nothing",
   resave: false,
-  saveUninitialized: false
+  saveUninitialized: false,
+  cookie:{
+    expires: 600000,
+  }
 }));
 
 app.use(passport.initialize());
 app.use(passport.session());
-
-
+app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '/public')));
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
@@ -53,19 +57,6 @@ app.engine('hbs', handlebars({
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'resources', 'views'));
 
-
 route(app);
-// passport.use(new LocalStrategy((email, password, done) => {
-//   if(email === req.email && password === req.password){
-//       return done(null, {email: req.email});
-//   }
-//   else {
-//       return done(null, false);
-//   }
-// }));
-
-// passport.serializeUser((user, done) => { done(null, user.email) })
-// passport.deserializeUser((user, done) => { done(null, user.email) })
-
 
 app.listen(port, (req, res) => console.log(`System running at http://localhost:${port}`));  
