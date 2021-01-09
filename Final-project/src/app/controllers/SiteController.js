@@ -19,5 +19,19 @@ class SiteController {
     about(req, res) {
         res.render('inf')
     }
+    async search(req, res) {
+        
+        const post_list = await Post.find()
+        var found_list=[]
+        for(var i=0;i<post_list.length;i++){
+
+           if(post_list[i].content.search(req.body.search)!=-1){
+                found_list.push(post_list[i]._id)
+           }
+        }
+        console.log(found_list)
+      
+        res.redirect('/')
+    }
 }
 module.exports = new SiteController;
