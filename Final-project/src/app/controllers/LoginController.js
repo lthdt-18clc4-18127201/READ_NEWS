@@ -9,7 +9,7 @@ class LoginController {
     secret(req ,res, next) {
         //console.log(req.isAuthenticated());
         if(req.isAuthenticated()) {
-            res.redirect('/news');
+            res.redirect('/');
         }
         else {
             res.redirect('/login');

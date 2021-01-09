@@ -1,5 +1,5 @@
 const LocalStrategy = require('passport-local').Strategy;
-const User = require('./app/Models/User');
+const User = require('../../app/Models/User');
 
 function initialize(passport) {
 
@@ -10,12 +10,9 @@ function initialize(passport) {
        
         if(user == null) {
             return done(null, false, { message: 'No user with that email' })
-        }
-
-        else{
+        } else {
             return done(null, user)
         }
-        return done(null, false)
     }
 
     passport.use(new LocalStrategy({usernameField: 'email'}, authenticateUser));

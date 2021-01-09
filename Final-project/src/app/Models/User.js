@@ -5,9 +5,11 @@ const passportLocalMongoose = require('passport-local-mongoose');
 const User = new Schema({
     name:{
         type:String,
+        unique: true,
         minlength: 1,
     },
     email:{
+        unique:true,
         type:String,
     },
     password:{
@@ -21,5 +23,10 @@ const User = new Schema({
 });
 
 User.plugin(passportLocalMongoose);
+User.pre('save', (next) => {
+    if(!this.isModified('password')) {
+        return next()
+    }
+})
 
 module.exports = mongoose.model('User', User);
