@@ -2,8 +2,8 @@
 {{#if messages.error}}
   <p style="color: rgb(217, 255, 0);">{{messages.error}}</p>
 {{/if}}
-<form method="POST" action="/login">
-  <div class="mt-4">
+<form method="POST" action="/login" id="form">
+  <div class="mt-4" id="email">
     <label for="email">Email</label>
     <input type="text" class="form-control" id="email" name="email" placeholder="Email..."reqiured>
   </div>
@@ -15,7 +15,24 @@
     <input type="checkbox" class="form-check-input" id="Check">
     <label class="form-check-label" for="Check">Remember me</label>
   </div>
-  <button type="submit" class="btn btn-primary">login</button>
+  <button type="submit" class="btn btn-primary" id="button">login</button>
 </form>
 <label for="form-suggest">Haven't an account?</label>
 <a href="/register" class="btn btn-primary my-4">Go to Register</a>
+
+<style>
+#form {
+  width: 600px;
+  margin-left: 250px ;
+  font-size: 20px;
+}
+#form #Check {
+  margin-top: 20px;
+}
+#form #button {
+  margin-left: 275px;
+}
+label {
+  padding: 10px 10px 10px 10px;
+}
+</style>

@@ -5,7 +5,7 @@
     </div>
 
     <table class="table mt-4">
-        <thead>
+        <thead id="thead">
             <tr>
                 <th scope="col">No.</th>
                 <th scope="col">Title</th>
@@ -14,7 +14,7 @@
                 <th scope="col"></th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="tbody">
             {{#each posts}}
             <tr>
                 <th scope="row">{{sum @index 1}}</th>
@@ -88,3 +88,25 @@
         });
     });
 </script>
+
+<style>
+h3 {
+    color: red;
+    text-align: center;
+    font-weight: bold;
+    font-size:40px;
+    padding-bottom: 20px;
+}
+#thead {
+    font-size: 20px;
+    font-style: italic;
+    margin: 5px 5px 5px 5px;
+    padding: 5px 5px 5px 5px;
+}
+#tbody {
+    margin: 0px;
+    padding: 0px;
+    border: 3px solid black;
+}
+
+</style>

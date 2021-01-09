@@ -1,4 +1,4 @@
-.test{
+.test {
     font-size: 1rem;
     background-color: red;
     width: 100px;
@@ -8,15 +8,47 @@
     margin-top: 16px;
 }
 
-small{
-    color:green;
+small {
+    color: green;
 }
 
-h1 {
-    color:rgb(187, 199, 19);
+body {
+    background-color: rgb(77, 167, 219);
+    font-family: Tahoma;
+    font-size: 13px;
+    margin: 0px auto;
 }
 
-h2 {
-    color:rgb(226, 69, 21);
+body h1 {
+    color: red;
+    text-align: center;
+    font-weight: bold;
 }
 
+#header {
+    background-color: red;
+    height: auto;
+}
+
+#main {
+    background-color: yellow;
+    height: 1000px;
+}
+
+#footer {
+    background-color: rgb(19, 19, 19);
+    height: 100px;
+    color: white;
+    margin: 0px;
+    padding: 0px;
+}
+
+#footer h2 {
+    text-align: center;
+}
+
+#footer p {
+    font-size: 16px;
+    font-style: italic;
+    line-height: 3px;
+}

@@ -1,5 +1,5 @@
-if(process.env.NODE_ENV !== 'production'){
-  require('dotenv').config();
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config();
 }
 
 const path = require('path');
@@ -25,25 +25,27 @@ const app = express();
 db.connect();
 
 initializePassport(
-  passport,
-  email => User.find(user => user.email === email)
+    passport,
+    email => User.find(user => user.email === email)
 )
 
 app.use(flash());
 app.use(session({
-  secret: "nothing",
-  resave: false,
-  saveUninitialized: false,
-  cookie:{
-    expires: 600000,
-  }
+
+    secret: "nothing",
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        expires: 600000,
+    }
+
 }));
 
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '/public')));
-app.use(express.urlencoded({extended:true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(methodOverride('_method'));
 
@@ -59,4 +61,5 @@ app.set('views', path.join(__dirname, 'resources', 'views'));
 
 route(app);
 
-app.listen(port, (req, res) => console.log(`System running at http://localhost:${port}`));  
+
+app.listen(port, (req, res) => console.log(`System running at http://localhost:${port}`));

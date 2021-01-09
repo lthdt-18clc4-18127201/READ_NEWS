@@ -1,5 +1,5 @@
 <h1>Register</h1>
-<form method="POST" action="/register/store">
+<form method="POST" action="/register/store" id="form">
   <div class="mt-4">
     <label for="name">Name</label>
     <input type="text" class="form-control" id="name" name="name" placeholder="Name..."reqiured>
@@ -16,7 +16,24 @@
     <input type="checkbox" class="form-check-input" id="Check">
     <label class="form-check-label" for="Check">Remember me</label>
   </div>
-  <button type="submit" class="btn btn-primary">Register</button>
+  <button type="submit" class="btn btn-primary" id="button">Register</button>
 </form>
 <label for="form-suggest">Already have account?</label>
 <a href="/login" class="btn btn-primary my-4">Go to Login</a>
+
+<style>
+#form {
+  width: 600px;
+  margin-left: 250px ;
+  font-size: 20px;
+}
+#form #Check {
+  margin-top: 20px;
+}
+#form #button {
+  margin-left: 250px;
+}
+label {
+  padding: 10px 10px 10px 10px;
+}
+</style>

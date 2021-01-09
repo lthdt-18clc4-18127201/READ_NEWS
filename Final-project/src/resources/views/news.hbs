@@ -1,12 +1,12 @@
 <div class="mt-4">
-    <div class="row">
+    <div class="row" id="display">
         {{#each posts}}
-        <div class="col-sm-6 col-lg-4">
-            <div class="card card-post-item">
+        <div class="col-sm-6 col-lg-4" id="post">
+            <div class="card card-post-item" id="post-img">
                 <a href="/news/{{this.slug}}">
                     <img class="card-img-top" src="{{this.img}}" alt="Card image cap">
                 </a>
-                <div class="card-body">
+                <div class="card-body" id="post-text">
                     <a href="/news/{{this.slug}}">
                         <h5 class="card-title">{{this.title}}</h5>
                     </a>
@@ -18,3 +18,8 @@
         {{/each}}
     </div>
 </div>
+<style>
+#post {
+    margin-bottom: 10px;
+}
+</style>
