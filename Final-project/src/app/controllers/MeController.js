@@ -50,16 +50,13 @@ class MeController {
             .catch(next)
     };
 
-    update(req, res, next) {
-        var check = false
-        if(req.isAuthenticated()) {
-            check = true
-        } else {
-            check = false
-        }
+    async update(req, res, next) {
+        
         User.updateOne({ _id: req.user._id }, req.body)
-            .then(() => res.redirect('/'))
-            .catch(next);
+        .then(()=>req.user.name=req.body.name)
+        .then(() => res.redirect('/'))
+        .catch(next);
+            
     }
 }
 module.exports = new MeController;
