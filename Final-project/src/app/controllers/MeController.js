@@ -42,7 +42,7 @@ class MeController {
         } else {
             check = false
         }
-        User.findById(req.params.id)
+        User.findById(req.user._id)
             .then(user => res.render('me/edit', { 
                 user: mongooseToObject(user),
                 check,
@@ -57,7 +57,7 @@ class MeController {
         } else {
             check = false
         }
-        User.updateOne({ _id: req.params.id }, req.body)
+        User.updateOne({ _id: req.user._id }, req.body)
             .then(() => res.redirect('/'))
             .catch(next);
     }
