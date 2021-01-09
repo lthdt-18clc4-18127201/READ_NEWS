@@ -9,9 +9,9 @@ router.post('/', passport.authenticate('local', {
     failureFlash: true,
 }));
 router.get('/secret', (req, res) => {
-    console.log(req.isAuthenticated())
+  //  console.log(req.isAuthenticated())
     if (req.isAuthenticated()) { //trả về true nếu đã đăng nhập rồi secret no check A:UTH)
- 
+        //console.log(req.user._id)
         res.redirect('/');//neu nhap dung thi ve trang chu
     } else {
         res.redirect('/login');//neu nhap sai pass thi no route lai ve login
