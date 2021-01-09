@@ -7,7 +7,7 @@ class LoginController {
     };
 
     secret(req ,res, next) {
-        console.log(req.isAuthenticated());
+        //console.log(req.isAuthenticated());
         if(req.isAuthenticated()) {
             res.redirect('/');
         }

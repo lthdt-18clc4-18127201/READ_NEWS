@@ -4,7 +4,10 @@ const { mutipleMongooseToObject } = require('../../util/mongoose');
 const { mongooseToObject } = require('../../util/mongoose');
 
 class NewsController {
-    news(req, res, next) {
+    async news(req, res, next) {
+    //console.log(req.user.name)
+       const post1 = await Post.findById("5ff3f3deda06430904bde257")
+        console.log(post1.content.search("mưa"))
         Post.find({})
             .then(posts => {
                 res.render('news', { posts: mutipleMongooseToObject(posts) });
