@@ -2,8 +2,7 @@ const { render } = require("node-sass");
 const Post = require('../Models/Post');
 const { mutipleMongooseToObject } = require('../../util/mongoose');
 const { mongooseToObject } = require('../../util/mongoose');
-var fs = require('fs');
-var path = require('path');
+
 class NewsController {
     async news(req, res, next) {
     //console.log(req.user.name)
@@ -41,17 +40,19 @@ class NewsController {
         var check_role = false 
         if(req.isAuthenticated()) {
             check = true
-            if(req.user.role=="manager"){
+            if(req.user.role == "manager"){
                 check_role=true
             }
         }
 
-        res.render('news/add',{user: req.user,check,check_role})
+        res.render('news/add',{
+            user: req.user,
+            check,
+            check_role})
     };
 
     store(req, res, next) {
-        var a=fs.readFileSync(path.join(__dirname,'../../../uploads/',req.file.filename)).toString('base64')
-        req.body.img='data:image/jpeg;base64,'+a
+        
         const new_add = new Post(req.body);
         new_add.save();
         res.redirect('/me/stored/news');
@@ -62,23 +63,23 @@ class NewsController {
         var check_role = false 
         if(req.isAuthenticated()) {
             check = true
-            if(req.user.role=="manager"){
-                check_role=true
+            if(req.user.role == "manager"){
+                check_role = true
             }
         }
 
         Post.findById(req.params.id)
-        
-            .then(post => res.render('news/edit', { post: mongooseToObject(post),user: req.user,check,check_role }))
+            .then(post => res.render('news/edit', { 
+                post: mongooseToObject(post),
+                user: req.user,
+                check,
+                check_role
+            }))
             .catch(next)
     };
 
     // [PUT] /news/:id
     update(req, res, next) {
-        
-        //console.log(req.img)
-        var a=fs.readFileSync(path.join(__dirname,'../../../uploads/',req.file.filename)).toString('base64')
-        req.body.img='data:image/jpeg;base64,'+a
         Post.updateOne({ _id: req.params.id}, req.body)
             .then(() => res.redirect('/me/stored/news'))
             .catch(next);

@@ -17,17 +17,18 @@
             Options
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="/about">About Team</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="/me/stored/news">My news</a>
+            <a class="dropdown-item" href="/web/stored/users">Manage User</a>
+            <a class="dropdown-item" href="/me/stored/news">Manage News</a>
             <a class="dropdown-item" href="/news/add">Add news</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="/me/trash/news" >Trash can</a>
-            {{!-- <a class="dropdown-item" href="/logout">Logout</a> --}}
           </div>
         </li>
         {{/if}}
         {{#if check}}
+        <li class="nav-item active">
+          <a class="nav-link" href="/about">About Team</a><span class="sr-only">(current)</span></a>
+        </li>
         <li class="nav-item active">
           <a class="nav-link" href="/me/edit">{{user.name}}</a><span class="sr-only">(current)</span></a>
         </li>

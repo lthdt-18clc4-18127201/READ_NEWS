@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const passportLocalMongoose = require('passport-local-mongoose');
+const mongooseDelete = require('mongoose-delete');
 
 const User = new Schema({
     name:{
@@ -28,5 +29,9 @@ User.pre('save', (next) => {
         return next()
     }
 })
+User.plugin(mongooseDelete, {
+    deletedAt: true, 
+    overrideMethods: 'all', 
+});
 
 module.exports = mongoose.model('User', User);
