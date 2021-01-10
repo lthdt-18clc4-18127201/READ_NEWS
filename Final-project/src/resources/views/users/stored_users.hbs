@@ -19,15 +19,14 @@
                     <td>{{this.name}}</td>
                     <td>{{this.role}}</td>
                     <td>
-                        <a href="/news/{{this._id}}/edit" class="btn btn-link">Edit</a>
-                        <a href="" class="btn btn-link" data-toggle="modal" data-id="{{this._id}}" data-target="#delete-new-modal">Delete</a>
+                        <a href="" class="btn btn-link" data-toggle="modal" data-id="{{this._id}}" data-target="#ban-user-modal">Ban</a>
                     </td>
                 </tr>
                 {{else}}
                 <tr>
                     <td colspan="5" class="text-center">
                         Your Website has no users
-                        <a href="/news/add" class="btn btn-primary my-4">Add an user</a>
+                        <a href="/" class="btn btn-primary my-4">Back</a>
                     </td>
                 </tr>
             {{/each}}
@@ -35,7 +34,7 @@
     </table>
 </div>
 
-<div id="delete-new-modal" class="modal" tabindex="-1" role="dialog">
+<div id="ban-user-modal" class="modal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -45,10 +44,10 @@
                 </button>
             </div>
             <div class="modal-body">
-                <p>Delete this news?</p>
+                <p>Ban this user?</p>
             </div>
             <div class="modal-footer">
-                <button id="btn-delete-new" type="button" class="btn btn-danger">Delete</button>
+                <button id="btn-ban-user" type="button" class="btn btn-danger">Ban</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
             </div>
         </div>
@@ -56,22 +55,21 @@
 </div>
 
 
-<form class="mt-4" name="delete-new-form" method="POST"></form>
+<form class="mt-4" name="ban-user-form" method="POST"></form>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        var newID;
-        var deleteForm = document.forms['delete-new-form'];
-        var btnDeleteNew = document.getElementById('btn-delete-new');
+        var userID;
+        var deleteForm = document.forms['ban-user-form'];
+        var btnDeleteUser = document.getElementById('btn-ban-user');
          
-        $('#delete-new-modal').on('show.bs.modal', function (event) {
+        $('#ban-user-modal').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
             newID = button.data('id');
-            console.log(newID); 
         });
 
         
-        btnDeleteNew.onclick = function() {
-            deleteForm.action = '/news/' + newID + '?_method=DELETE';
+        btnDeleteUser.onclick = function() {
+            deleteForm.action = '/users/' + newID + '?_method=DELETE';
             deleteForm.submit();
         }
     });
