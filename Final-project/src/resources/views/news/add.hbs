@@ -1,7 +1,7 @@
 <div class="mt-4">
     <h3>Add a news</h3>
 
-    <form action='/news/store' method="POST">
+    <form action='/news/store' method="POST" enctype="multipart/form-data">
         <div class="form-group">
             <label for="title">Title</label>
             <input type="text" class="form-control" id="title" name="title" placeholder="Title...">
@@ -16,7 +16,7 @@
         </div>
         <div class="form-group">
             <label for="image">Image of news</label>
-            <input type="text" class="form-control" id="image" name="img" placeholder="Path...">
+            <input type="file" class="form-control-file" value="{{post.img}}" id="image" name="img">
         </div>
         <div class="form-group">
             <label for="author">Author</label>
