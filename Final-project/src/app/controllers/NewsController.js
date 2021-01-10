@@ -40,12 +40,15 @@ class NewsController {
         var check_role = false 
         if(req.isAuthenticated()) {
             check = true
-            if(req.user.role=="manager"){
+            if(req.user.role == "manager"){
                 check_role=true
             }
         }
 
-        res.render('news/add',{user: req.user,check,check_role})
+        res.render('news/add',{
+            user: req.user,
+            check,
+            check_role})
     };
 
     store(req, res, next) {
@@ -60,13 +63,18 @@ class NewsController {
         var check_role = false 
         if(req.isAuthenticated()) {
             check = true
-            if(req.user.role=="manager"){
-                check_role=true
+            if(req.user.role == "manager"){
+                check_role = true
             }
         }
 
         Post.findById(req.params.id)
-            .then(post => res.render('news/edit', { post: mongooseToObject(post),user: req.user,check,check_role }))
+            .then(post => res.render('news/edit', { 
+                post: mongooseToObject(post),
+                user: req.user,
+                check,
+                check_role
+            }))
             .catch(next)
     };
 

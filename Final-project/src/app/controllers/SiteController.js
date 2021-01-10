@@ -1,4 +1,3 @@
-const User = require('../Models/User');
 const { mongooseToObject } = require('../../util/mongoose');
 const Post = require('../Models/Post');
 const { render } = require('node-sass');
@@ -16,20 +15,30 @@ class SiteController {
 
         res.render('homepage', {
             user: req.user,
-            check,check_role
+            check,
+            check_role
         });
     }
     about(req, res) {
-        res.render('inf')
+        var check = false
+        var check_role = false 
+        if(req.isAuthenticated()) {
+            check = true
+            if(req.user.role == "manager"){
+                check_role = true
+            }
+        }
+        res.render('inf', {
+            user: req.user,
+            check,
+            check_role,
+        })
     }
     async search(req, res) {
         var check = false
         var check_role = false 
         if(req.isAuthenticated()) {
             check = true
-            if(req.user.role=="manager"){
-                check_role=true
-            }
         }
 
         const post_list = await Post.find()
@@ -46,7 +55,11 @@ class SiteController {
            //console.log(await Post.findById(found_list[i]))
             found_object.push(await Post.findById(found_list[i]))
         }
-        res.render('news',{posts: mutipleMongooseToObject(found_object),check,check_role})
+        res.render('news',{
+            posts: mutipleMongooseToObject(found_object),
+            user: req.user,
+            check,
+        })
         //res.redirect('/')
     }
 }
