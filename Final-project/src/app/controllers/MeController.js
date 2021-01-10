@@ -7,45 +7,54 @@ const { mongooseToObject } = require('../../util/mongoose');
 class MeController {
     storedNews(req, res, next) {
         var check = false
+        var check_role = false 
         if(req.isAuthenticated()) {
             check = true
-        } else {
-            check = false
+            if(req.user.role=="manager"){
+                check_role=true
+            }
         }
+
         Post.find({})
             .then(posts => res.render('me/stored_news', { 
                 posts:mutipleMongooseToObject(posts),
-                check,
+                check,check_role
             }))
             .catch(next)
     };
 
     trashNews(req, res, next) {
         var check = false
+        var check_role = false 
         if(req.isAuthenticated()) {
             check = true
-        } else {
-            check = false
+            if(req.user.role=="manager"){
+                check_role=true
+            }
         }
+
         Post.findDeleted({})
             .then(posts => res.render('me/trash_news', { 
                 posts:mutipleMongooseToObject(posts),
-                check,
+                check,check_role
             }))
             .catch(next)
     };
 
     edit(req, res, next) {
         var check = false
+        var check_role = false 
         if(req.isAuthenticated()) {
             check = true
-        } else {
-            check = false
+            if(req.user.role=="manager"){
+                check_role=true
+            }
         }
+
         User.findById(req.user._id)
             .then(user => res.render('me/edit', { 
                 user: mongooseToObject(user),
-                check,
+                check,check_role
             }))
             .catch(next)
     };
