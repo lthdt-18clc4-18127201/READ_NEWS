@@ -2,7 +2,7 @@ const User = require('../Models/User');
 const { mongooseToObject } = require('../../util/mongoose');
 const Post = require('../Models/Post');
 const { render } = require('node-sass');
-
+const { mutipleMongooseToObject } = require('../../util/mongoose');
 class SiteController {
     home(req, res, next) {
         var check = false
@@ -29,9 +29,14 @@ class SiteController {
                 found_list.push(post_list[i]._id)
            }
         }
-        console.log(found_list)
-      
-        res.redirect('/')
+        var found_object=[]
+        //console.log(found_list)
+        for(var i=0;i<found_list.length;i++){
+            console.log(await Post.findById(found_list[i]))
+            found_object.push(await Post.findById(found_list[i]))
+        }
+        res.render('news',{posts: mutipleMongooseToObject(found_object)})
+        //res.redirect('/')
     }
 }
 module.exports = new SiteController;
