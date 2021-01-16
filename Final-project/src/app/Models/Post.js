@@ -25,6 +25,9 @@ const Post = new mongoose.Schema({
     slug: { 
         type: String, slug: "title", 
         unique: true,
+    },
+    comment:{
+        type: String,
     }
 }, {
     timestamps: true,

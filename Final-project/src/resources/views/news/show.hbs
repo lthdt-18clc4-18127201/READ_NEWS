@@ -5,4 +5,11 @@
         <p>{{post.content}}</p>
         <p>Author of reproduction: {{post.author}}</p>
     </blockquote>
+    <form action="/news/{{post._id}}/cmt" method="POST">
+        <div class="form-group">
+            <label for="comment">Leave comment here</label>
+            <textarea class="form-control" id="comment" name="comment" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Comment</button>
+    </form>
 </div>

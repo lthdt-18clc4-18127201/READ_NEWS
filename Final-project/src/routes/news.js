@@ -17,6 +17,7 @@ var upload = multer({ storage: storage });
 
 router.get('/add', newsController.add);
 router.post('/store', upload.single('img'), newsController.store);
+router.post('/:id/cmt', newsController.comment);
 router.get('/:id/edit', newsController.edit);
 router.put('/:id', upload.single('img'),newsController.update);
 router.delete('/:id', newsController.delete);

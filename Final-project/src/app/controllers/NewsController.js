@@ -6,7 +6,6 @@ var fs = require('fs');
 var path = require('path');
 class NewsController {
     async news(req, res, next) {
-    //console.log(req.user.name)
     var check = false
     var check_role = false 
     if(req.isAuthenticated()) {
@@ -70,6 +69,15 @@ class NewsController {
         Post.findById(req.params.id)
         
             .then(post => res.render('news/edit', { post: mongooseToObject(post),user: req.user,check,check_role }))
+            .catch(next)
+    };
+
+    comment(req, res, next) {
+        Post.findById(req.params.id)
+            .then(post => {
+                post.comment = req.params.comment;
+                post.save(() => { res.redirect('back') });
+            })
             .catch(next)
     };
 
