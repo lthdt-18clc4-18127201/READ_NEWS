@@ -1,3 +1,5 @@
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v9.0" nonce="GYAx79Lk"></script>
 <div class="mt-4">
     <blockquote class="blockquote">
         <h1 class="mb-0">{{post.title}}</h1> 
@@ -5,11 +7,5 @@
         <p>{{post.content}}</p>
         <p>Author of reproduction: {{post.author}}</p>
     </blockquote>
-    <form action="/news/{{post._id}}/cmt" method="POST">
-        <div class="form-group">
-            <label for="comment">Leave comment here</label>
-            <textarea class="form-control" id="comment" name="comment" rows="3"></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Comment</button>
-    </form>
 </div>
+<div class="fb-comments" data-href="https://www.facebook.com/nguyenhoanganhtu7377/posts/2606438949578531" data-width="" data-numposts="5"></div>
